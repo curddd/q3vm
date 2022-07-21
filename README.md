@@ -13,24 +13,28 @@
 Sample:
 
 ```c
-000009b2  const           1   0x0
-000009b3  eq             -2   0x9d2
+00000088 000001c5  const           1   0x98
+00000089 000001ca  jump           -1
 
-;----------------------------------- from  0x9af
-
-  ; "sprites/foe"
-000009b4  const           1   0x2ae2
-000009b5  arg            -1   0x8
-000009b6  local           1   0x198
-000009b7  const           1  -0x28   ; trap_R_RegisterShader()
-000009b8  call           -1
-000009b9  store4         -2
+;----------------------------------- case from  0x18(0xa)
+0000008a 000001cb  local           1   0x30  ; arg1
+0000008b 000001d0  load4
+0000008c 000001d1  arg            -1   0x8
     ;; dec: ----
-000009ba  const           1   0x1098f8
+
+0000008d 000001d3  local           1   0x20
+0000008e 000001d8  const           1   0x11618  ; :unknown function:
+0000008f 000001dd  call           -1
+00000090 000001de  store4         -2
+    ;; dec: ----
+
+
+
 ```
 
 Features:
 
+* Shows offset of OP
 * Indicates stack size change for opcodes
 * Labels jump locations
 * Identities q3asm switch jump tables

@@ -1609,6 +1609,7 @@ class Qvm:
             decStr = None
 
             opcStr = self.codeData[pos]
+            op_pos = pos + self.codeSegOffset
             opc = xord(opcStr)
             pos += 1
             name = opcodes[opc][OPCODE_NAME]
@@ -2008,9 +2009,9 @@ class Qvm:
 
             sc = opcodes[opc][OPCODE_STACK_CHANGE]
             if sc != 0  or  parm != None:
-                outputb("%08x  %-13s" % (count, name))
+                outputb("%08x %08x  %-13s" % (count, op_pos, name))
             else:
-                outputb("%08x  %s" % (count, name))
+                outputb("%08x %08x  %s" % (count, op_pos, name))
 
             if sc < 0:
                 outputb("  %d" % sc)
